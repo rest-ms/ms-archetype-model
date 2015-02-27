@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence xmlns="http://java.sun.com/xml/ns/persistence"
+	version="2.0">
+    <persistence-unit name="mysql" transaction-type="RESOURCE_LOCAL">
+        <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+        <properties>
+            <property name="hibernate.connection.driver_class" value="com.mysql.jdbc.Driver"/>
+            <property name="hibernate.connection.url" value="jdbc:mysql://192.168.1.110:3306/${databaseName}"/>
+            <property name="hibernate.connection.username" value="root"/>
+            <property name="hibernate.connection.password" value="root"/>
+
+            <property name="hibernate.connection.provider_class" value="org.hibernate.connection.C3P0ConnectionProvider" />
+
+	        <property name="hibernate.c3p0.max_size" value="100" />
+	        <property name="hibernate.c3p0.min_size" value="10" />
+	        <property name="hibernate.c3p0.acquire_increment" value="5" />
+	        <property name="hibernate.c3p0.idle_test_period" value="300" />
+	        <property name="hibernate.c3p0.max_statements" value="50" />
+	        <property name="hibernate.c3p0.timeout" value="100" />
+        
+            <property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5InnoDBDialect"/>
+            <property name="hibernate.hbm2ddl.auto" value="update"/>
+            <property name="hibernate.show_sql" value="false" />
+            <property name="hibernate.format_sql" value="true" />
+            <property name="hibernate.archive.autodetection" value="class, hbm"/>
+            <property name="org.hibernate.envers.audit_table_suffix" value="_HIST"/>
+            <property name="org.hibernate.envers.audit_table_prefix" value=""/>
+            <property name="org.hibernate.envers.audit_strategy" value="org.hibernate.envers.strategy.ValidityAuditStrategy"/>
+            <property name="org.hibernate.envers.audit_strategy_validity_store_revend_timestamp" value="true"/>
+        </properties>
+    </persistence-unit>
+</persistence>
